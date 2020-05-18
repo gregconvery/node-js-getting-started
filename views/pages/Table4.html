@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<!-- meta http-equiv="refresh" content="3" -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+    <title>Play Euchre!</title>
+
+    <!-- Bootstrap core CSS -->
+
+
+    <!-- Custom styles for this template go here -->
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<link rel="stylesheet" href="http:\\www.euchreplayer.com/css/cards_style.css">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+
+    <table>  <!--  the game table -->
+       <tr>    
+	      <td>
+		    <table> 
+		        <tr> 
+		        <td></td>
+                <td> 
+                <input type="text" id="playername"></input>
+                </td>
+                <td><img src="http:\\www.euchreplayer.com/img/GreenF.gif"></td>
+							    <td>   <!--Seats -->
+								   <table>  <!--  -->
+								      <tr>
+								         <td>  <!-- empty -->
+								         </td>
+								         <td>   <!-- North Seat and name -->
+										    <div id = "NorthSeat"><img src="http:\\www.euchreplayer.com/img/chair.png" class="gamebutton"  onclick="UpdatePlayer(1)"></div>
+								         </td>
+								      </tr>
+								      <tr>
+								         <td>  <!-- empty -->
+								         </td>
+								         <td>   <!-- North  name -->
+										    <input type="text" id = "NorthPlayerName"></input>
+								         </td>
+								      </tr>
+								      <tr>
+								          <td>  <!-- West Seat and name -->
+										     <table>
+											    <tr>
+											       <td>
+										               <div id = "WestSeat">
+										                   <img src="http:\\www.euchreplayer.com/img/chair.png" class="gamebutton" onclick="UpdatePlayer(4)"></div>
+											        </td>
+											    </tr>
+											    <tr>
+											       <td>
+										               <input type ="text" id = "WestPlayerName"></input>
+											        </td>
+											    </tr>
+                                             </table>												
+								          </td>
+								          <td>  <!-- empty -->
+								          </td>
+								          <td>  <!-- East Seat and name -->
+										     <table>
+											    <tr>
+											       <td>
+										               <div id = "EastSeat">
+										                   <img src="http:\\www.euchreplayer.com/img/chair.png" class="gamebutton"  onclick="UpdatePlayer(2)">
+										               </div>
+											        </td>
+											    </tr>
+											    <tr>
+											       <td>
+										               <input type="text"  id = "EastPlayerName"></input>
+											        </td>
+											    </tr>
+                                             </table>												
+								          </td>
+								      </tr>
+								      <tr>
+								         <td>  <!-- empty -->
+								         </td>
+								         <td>   <!-- South Seat and name -->
+										    <div id = "SouthSeat"><img src="http:\\www.euchreplayer.com/img/chair.png" class="gamebutton"  onclick="UpdatePlayer(3)"></div>
+								         </td>
+								      </tr>
+								      <tr>
+								         <td>  <!-- empty -->
+								         </td>
+								         <td>   <!-- South  name -->
+										    <input type="text" id = "SouthPlayerName"></input>
+								         </td>
+								      </tr>
+
+								   </table>
+								</td>
+					
+					<td width:65%></td>
+				</tr>
+            </table>
+		</td>
+		<td width:5%>     <!--   Leave some space -->
+		 <div class="cardcol"><img src="http:\\www.euchreplayer.com/img/GreenL.gif"> </div>
+		</td>    
+		<td width:25%>
+		</td>
+	 </tr>
+   </table>
+
+   <!-- ============================= -->
+<!-- All your JavaScript comes now -->
+<!-- ============================= -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<!-- script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script -->
+
+<!-- Bootstrap core JS "; -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<!-- Can place script tags with JavaScript files here -->
+
+<!--script src="/node_modules/socket.io/lib/socket.js"></script -->
+<script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
+<!-- script src="socket.js"></script -->
+
+
+<!-- script src="/node_modules/socket.io-client/lib/on.js"></script -->
+<script>
+/*
+ *   My code
+ */
+ 
+
+  var socket = io();
+  
+  socket.on('connection', () => {
+  console.log('a user connected at js script');
+    });
+
+
+function UpdatePlayer(playernum)
+{
+  var socket2 = io();
+
+   var playerNameId = "";
+   var playernumstr = "";
+         
+   if (playernum == 1)
+   {
+        playerNameId="NorthPlayerName";
+//		seatName = "NorthSeat"
+        playernumstr = "1";
+   }
+   if (playernum == 2)
+   {
+        playerNameId="EastPlayerName";
+//		seatName = "EastSeat"
+        playernumstr = "2";
+   }
+   if (playernum == 3)
+   {
+        playerNameId="SouthPlayerName";
+//		seatName = "SouthSeat"
+        playernumstr = "3";
+   }
+   if (playernum == 4)
+   {
+        playerNameId="WestPlayerName";
+//		seatName = "WestSeat"
+        playernumstr = "4";
+   }
+   playerNameStr = document.getElementById(playerNameId).value;
+ 
+ 
+   var ggg = playerNameStr.concat("X");
+  alert(ggg);
+
+   if (ggg == "X")
+   {
+      alert ('update');
+	  alert (playernumstr);
+      playerNameStr = document.getElementById("playername").value;
+	  alert (playerNameStr);
+	  
+//      document.getElementById(seatName).innerHTML="<img src=\"http:\\www.euchreplayer.com/img/chairFilled.png\">";
+      socket2.emit('PlayerSit', {Playernum: playernumstr, PlayerName: playerNameStr});
+	  alert ('after update');
+
+	}  
+}
+
+</script>
+</body>
+</html>
