@@ -143,11 +143,11 @@
  */
  
 
-//  var socket = io();
+ // var socket = io();
   
-//  socket.on('connection', () => {
-//  console.log('a user connected at js script');
-//    });
+  socket.on('connection', () => {
+     alert('a user connected at js script');
+    });
 
 
 function UpdatePlayer(playernum)
@@ -194,8 +194,8 @@ function UpdatePlayer(playernum)
       playerNameStr = document.getElementById("playername").value;
 	  alert (playerNameStr);
 	  
-//      document.getElementById(seatName).innerHTML="<img src=\"http:\\www.euchreplayer.com/img/chairFilled.png\">";
-//      socket2.emit('PlayerSit', {Playernum: playernumstr, PlayerName: playerNameStr});
+//       document.getElementById(seatName).innerHTML="<img src=\"http:\\www.euchreplayer.com/img/chairFilled.png\">";
+ //     socket2.emit('PlayerSit', {Playernum: playernumstr, PlayerName: playerNameStr});
 	  alert ('after update');
 
 	}  
