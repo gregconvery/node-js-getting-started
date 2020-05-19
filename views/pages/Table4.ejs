@@ -143,16 +143,16 @@
  */
  
 
- // var socket = io();
+//  var socket = io();
   
-  socket.on('connection', () => {
-     alert('a user connected at js script');
-    });
+//  socket.on('connection', () => {
+//  console.log('a user connected at js script');
+//    });
 
 
 function UpdatePlayer(playernum)
 {
-//  var socket2 = io();
+  var socket = io();
 
    var playerNameId = "";
    var playernumstr = "";
@@ -194,13 +194,25 @@ function UpdatePlayer(playernum)
       playerNameStr = document.getElementById("playername").value;
 	  alert (playerNameStr);
 	  
-//       document.getElementById(seatName).innerHTML="<img src=\"http:\\www.euchreplayer.com/img/chairFilled.png\">";
- //     socket2.emit('PlayerSit', {Playernum: playernumstr, PlayerName: playerNameStr});
+//      document.getElementById(seatName).innerHTML="<img src=\"http:\\www.euchreplayer.com/img/chairFilled.png\">";
+//      socket.emit('PlayerSit', {Playernum: playernumstr, PlayerName: playerNameStr});
+      this.preventDefault();
+      socket.broadcast.emit('PlayerSit', 'WestSeat');
 	  alert ('after update');
 
 	}  
 }
 
+$(function () {
+    $(function () {
+       var socket = io();
+       socket.on('PlayerSit', function(msg){
+   //   $('#messages').append($('<li>').text(msg));
+       document.getElementById(msg).innerHTML="<img src=\"http:\\www.euchreplayer.com/img/chairFilled.png\">";
+    });
+  });
+};
+  
 </script>
 </body>
 </html>
